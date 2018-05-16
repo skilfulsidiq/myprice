@@ -1,0 +1,208 @@
+@extends('layouts.master')
+@section('title', 'MyPrice|dashboard')
+@section('page_heading')
+    <ol class="breadcrumb">
+        <li>
+            <i class="icon fa fa-home"></i>
+            <a href="{{route('home')}}">Home</a>
+        </li>
+        <li><a href="{{route('home')}}">Dashboard</a></li>
+        {{--<li class="active"><span>View All Products</span></li>--}}
+        {{--<li class="pull-right"><a href="{{route('product.create')}}">Add Product</a>  </li>--}}
+    </ol>
+@stop
+
+
+@section('content')
+
+@if(Auth::user()->isNew())
+  <div class="panel panel-white">
+        <div class="panel-heading">
+            <div class="panel-title text-center">Set Up your Shop</div>
+        </div>
+        <div class="panel-body pb">
+            <form action="{{route('home.setupstore')}}" method="POST" id="shopownerform" enctype="multipart/form-data">
+                {{csrf_field()}}
+                {{ method_field('POST') }}
+                <div class="row">
+                    <div class="col-xs-12 col-md-4">
+                        <div class="form-group">
+                            <label>Shop Name</label>
+                            <input type="text" name="name" value="" placeholder="Company Name" class="form-control">
+                            @if ($errors->has('name'))
+                                <div class="error">{{ $errors->first('name') }}</div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <div class="form-group">
+                            <label>Shop Brand photo</label>
+                            <input type="file" name="brandphoto" value=""  class="form-control">
+                            @if ($errors->has('brandphoto'))
+                                <div class="error">{{ $errors->first('brandphoto') }}</div>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-4">
+                        <div class="form-group">
+                        <label>Shop Address</label>
+                        <textarea name="address" placeholder="Address" rows="3" class="form-control"></textarea>
+                        @if ($errors->has('address'))
+                            <div class="error">{{ $errors->first('address') }}</div>
+                        @endif
+                    </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-md-offset-3">
+                        <div class="form-group">
+                            <input type="submit" name="submit" value="Save" class="btn btn-success form-control">
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+@else
+<!-- <div class="container"> -->
+    <div class="row">
+
+        <!-- Widget column -->
+        <div class="col-xs-12 col-sm-6 col-md-3">
+
+            <!-- Widget: card box -->
+            <div class="widget widget-card-box-stat wg-warning">
+                <div class="widget-layer widget-layer-main widget-layer-sizer">
+                    <div class="widget-layer-content">
+                        <div class="widget-body">
+
+                            <!-- Left column -->
+                            <div class="wg-left">
+                                <span class="icon ti-user"></span>
+                            </div>
+                            <!-- /Left column -->
+
+                            <!-- Right column -->
+                            <div class="wg-right">
+                                <div class="wg-value"><b style="font-weight: bolder"></b></div>
+                                <div class="wg-title">Total Tenants</div>
+                            </div>
+                            <!-- /Right column -->
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Widget: card box -->
+
+        </div>
+        <!-- /Widget column -->
+
+        <!-- Widget column -->
+        <div class="col-xs-12 col-sm-6 col-md-3">
+
+            <!-- Widget: card box -->
+            <div class="widget widget-card-box-stat wg-default">
+                <div class="widget-layer widget-layer-main widget-layer-sizer">
+                    <div class="widget-layer-content">
+                        <div class="widget-body">
+
+                            <!-- Left column -->
+                            <div class="wg-left">
+                                <span class="icon ti-comment"></span>
+                            </div>
+                            <!-- /Left column -->
+
+                            <!-- Right column -->
+                            <div class="wg-right">
+                                <div class="wg-value"><b style="font-weight: bolder"></b></div>
+                                <div class="wg-title">Total Complaints</div>
+                            </div>
+                            <!-- /Right column -->
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Widget: card box -->
+
+        </div>
+        <!-- /Widget column -->
+
+        <!-- Widget column -->
+        <div class="col-xs-12 col-sm-6 col-md-3">
+
+            <!-- Widget: card box -->
+            <div class="widget widget-card-box-stat wg-success">
+                <div class="widget-layer widget-layer-main widget-layer-sizer">
+                    <div class="widget-layer-content">
+                        <div class="widget-body">
+
+                            <!-- Left column -->
+                            <div class="wg-left">
+                                <span class="icon ti-money"></span>
+                            </div>
+                            <!-- /Left column -->
+
+                            <!-- Right column -->
+
+                            <div class="wg-right">
+                                <div class="wg-value"><b style="font-weight: bolder"></b></div>
+                                <div class="wg-title">Total Open Complaints</div>
+                            </div>
+                            <!-- /Right column -->
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Widget: card box -->
+
+        </div>
+        <!-- /Widget column -->
+
+        <!-- Widget column -->
+        <div class="col-xs-12 col-sm-6 col-md-3">
+
+            <!-- Widget: card box -->
+            <div class="widget widget-card-box-stat wg-primary">
+                <div class="widget-layer widget-layer-main widget-layer-sizer">
+                    <div class="widget-layer-content">
+                        <div class="widget-body">
+
+                            <!-- Left column -->
+                            <div class="wg-left">
+                                <span class="icon ti-user"></span>
+                            </div>
+                            <!-- /Left column -->
+
+                            <!-- Right column -->
+                            <div class="wg-right">
+                                <div class="wg-value"><b style="font-weight: bolder"></b></div>
+                                <div class="wg-title">Total Open Complaints</div>
+                            </div>
+                            <!-- /Right column -->
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Widget: card box -->
+
+        </div>
+        <!-- /Widget column -->
+
+
+    </div>
+
+
+@endif
+@endsection

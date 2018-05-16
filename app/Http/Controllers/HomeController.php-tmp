@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Controllers;
+
+class HomeController extends Controller {
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct() {
+		$this->middleware('auth');
+	}
+
+	/**
+	 * Show the application dashboard.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index() {
+		// $authUser = Auth::user()->id;
+		//  $shop = Shopowner::where(['userid'=>$authUser])->get();
+		//  // dd($shop);
+		//  if(empty($shop)){
+		//        $k = 1;
+		//    }else{
+		//      $k = 0;
+		//    }
+
+		return view('home');
+	}
+
+}

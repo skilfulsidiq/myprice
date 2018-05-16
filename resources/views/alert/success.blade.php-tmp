@@ -1,0 +1,15 @@
+{{--/**--}}
+ {{--* Created by PhpStorm.--}}
+ {{--* User: Skilfulsidiq--}}
+ {{--* Date: 5/10/2018--}}
+ {{--* Time: 12:32 PM--}}
+ {{--*/--}}
+@if(session()->has('success'))
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3"><div class="alert  alert-success alert-dismissable bg-success" style="width:300px; margin:30px auto;">
+            <button type="button" class="close" data dismiss="alert" aria-label="close"></button>
+            <strong>{{ session()->get('success')}}</strong></div>
+        </div>
+    </div>
+
+@endif
